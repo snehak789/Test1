@@ -1,0 +1,41 @@
+//height and weight of individuals whose weight is btw 120-150 and height btw 66-72.
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+
+{
+    //Declaring variables
+    int n,i;
+    float weight[i],height[i];
+    
+    cout << "Enter number of individuals : ";
+    cin >> n;
+    
+    cout << "Enter Weight and Height of " << n << " individuals : "<<endl;
+    
+    //using below for loop to take user entered individual values  
+    for (int i = 0; i < n; i++)
+      {
+        cin>>weight[i]>>height[i];
+       }
+     
+      cout<<"Valid Weight and Height"<<endl;
+    
+     //used nested if to check the individuals whose weight is between 120-150 pounds and height between 66-72 inches
+          for(i=0;i<n;i++)
+       {
+        if(weight[i] >= 120 && weight[i] <= 150)  
+         {
+               
+          if(height[i] >= 66 && height[i] <= 72)
+           {
+           cout<<weight[i]<<" ";
+           cout<<height[i]<<" "<<endl;
+           }      
+         }
+       }
+        return 0;
+}

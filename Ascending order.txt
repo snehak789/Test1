@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+ int v1,v2,v3;
+ 
+cout<<"enter first number"<<endl;
+ cin>>v1;
+ 
+ cout<<"enter second number"<<endl;
+ cin>>v2;
+ 
+ cout<<"enter third number"<<endl;
+ cin>>v3;
+
+if( v1<v2 && v1<v3 && v2>v3 )
+{
+cout<< "The sorted value is : " <<v1<<" "<<v3<<" "<<v2<<endl;
+}
+ 
+ else if( v1<v2 && v1<v3 && v2<v3 ) 
+{ 
+cout<< "The sorted value is : " <<v1<<" "<<v2<<" "<<v3<<endl;
+ }
+
+else if ( v2<v1 && v2<v3 && v3>v1 )
+{ 
+cout<< "The sorted value is : " <<v2<<" "<<v1<<" "<<v3<<endl;
+ }
+ 
+ else if ( v2<v1 && v2<v3 && v3<v1 )
+{ 
+cout<< "The sorted value is : " <<v2<<" "<<v3<<" "<<v1<<endl;
+ }
+
+else if ( v3<v1 && v3<v2 && v1>v2)
+{ 
+cout<< "The sorted value is : " <<v3<<" "<<v2<<" "<<v1<<endl;
+  }
+ 
+ else if ( v3<v1 && v3<v2 && v1<v2)
+{ 
+cout<< "The sorted value is : " <<v3<<" "<<v1<<" "<<v2<<endl;
+ }
+
+    return 0;
+}

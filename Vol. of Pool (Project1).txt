@@ -1,0 +1,65 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    float L,W,R,DS,LS,DD,LD;                             // Defining Variables
+    float VOL_POOL,VOL_WATER,TOTAL_WATER,CHLORINE_REQ;      // Defining Variables
+    
+    cout << "**** Pool Dimensions (linear feet) ****" <<endl;
+    
+    cout << "Enter the Length of the pool : ";      
+    cin >> L;                                          // L variable stores total length of the pool (excluding wading area)
+    
+    cout << "Enter the Width of the pool : ";
+    cin >> W;                                         // W variable stores total width of the pool
+    
+    cout << "Enter the Radius of the semi-circular wading area : ";
+    cin >> R;                                         // R variable stores the radius of semi-circular wading area
+    
+    cout << "Enter the depth of pool on the shallow end : ";
+    cin >> DS;                                       // DS variable stores the depth of pool at shallow end
+    
+    cout << "Enter the length of the shallow end : ";
+    cin >> LS;                                      // LS variable stores the length of shallow end
+    
+    cout << "Enter the depth of pool on the deep end : ";
+    cin >> DD;                                     // DD variable stores the depth of deep end
+    
+    cout << "Enter the length of the deep end : ";
+    cin >> LD;                                     // LD variable stores the length of deep end
+    
+
+       /*VOL_POOL variable stores the total volume of the pool (cubic feet)
+       VOL_POOL = Volume of Rectangle + Volume of Trapezoid + volume of Rectangle + half volume of cylinder*/
+       
+    VOL_POOL = (LD * W * DD) + (((0.5 *(DD+DS)) * W * (L - (LD + LS)))) + (LD * W * DS) + (0.5 * (3.14159 * R * R * DS));
+    
+    //VOL_WATER variable stores the total volume of water to fill the pool (cubic feet)
+    
+    VOL_WATER = (LD * W  * (DD-0.5)) +((0.5 * ((DD-0.5)+(DS-0.5))) * W * (L - (LD + LS))) +(LD * W * (DS-0.5)) + (0.5 * (3.14159 * (R) * (R) * (DS-0.5)));
+    
+    
+       /* TOTAL_WATER variable stores the total volume of water to fill the pool in Cubic feet (1 cubic foot or water = 7.481 US gallons) */
+    
+    TOTAL_WATER = VOL_WATER * 7.481;
+    
+      /* CHLORINE_REQ variable stores the total amount of chlorine needed to treat the pool (0.0001 pounds per US gallon) */
+      
+    CHLORINE_REQ = TOTAL_WATER * 0.0001;
+    
+    cout <<endl << " **** Pool Volume  **** " << endl;
+    
+    cout << "Total volume of the pool (cubic feet): " << round(VOL_POOL) << endl;
+    
+    cout << "Total volume of water to fill the pool (cubic feet): " << round(VOL_WATER) << endl;
+    
+    cout << "Total US gallon of water to fill the pool: " << round(TOTAL_WATER) << endl;
+    
+    cout << "Total pounds of chlorine treatment needed: " << fixed << setprecision(1) << CHLORINE_REQ << endl;
+
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int a,b,c;
+ 
+cout<<"enter first side of a triangle"<<endl;
+ cin>>a;
+ 
+ cout<<"enter second side of a triangle"<<endl;
+ cin>>b;
+ 
+ cout<<"enter third side of a triangle"<<endl;
+ cin>>c;
+
+if(a + b > c && a + c > b && b + c > a)
+
+cout<<"The values"<<" "<<a<<" "<<b<<" "<<c<<" "<<"forms a valid Triangle";
+else
+cout<<"The values"<<" "<<a<<" "<<b<<" "<<c<<" "<<"doesnot form a valid Triangle";
+
+    return 0;
+}

@@ -1,0 +1,30 @@
+output:
+* * * * *
+  * * * *
+    * * *
+      * *
+        *
+
+int main()
+{
+   //Declaring variables
+   int i, j, row,space;
+
+   cout << "Enter number of rows: ";
+   cin >> row;
+
+   //used Nested for loop to print asterisk and spaces 
+      for(i = row; i >= 1; i--)             
+   {
+     for(space = i; space < row; space++)
+         cout << "  ";
+      
+      for(j = 1; j <= i; j++)
+      {
+         cout << "* ";
+      }
+      cout << "\n";
+   }
+
+   return 0;
+}

@@ -1,0 +1,183 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+int main()
+
+{
+    //Defining Input and Output variables of float datatype
+    
+    float Length, Width, Radius, Depth_DeepEnd, Depth_ShallowEnd, Length_DeepEnd, Length_ShallowEnd; 
+	
+    float Volume_of_Pool, Volume_of_Water, Total_Water_Required, Total_Chlorine_Required;  
+	
+    
+	cout << "\n********** Pool Dimensions (Linear Feet) **********" << endl;
+	
+	
+ 	while(1)  //The while(1) is used for infinite loop and to come out from this infinite loop, we have to use break statement
+	{
+	    cout << "Enter the length of the pool in the range of 30 to 120 feet : ";
+	    cin >> Length;       // Length variable stores total length of the pool (excluding wading area)
+	    
+	    if (Length >= 30 && Length <= 120)   //if condition to check whether user entered length is in the range 30 to 120 feet
+	    {
+	       cout << "You have entered valid pool length of "<< Length <<" feet \n"<< endl;
+	       break;
+	    }
+	    else
+	    {
+	        
+	        cout << "Invalid pool length... Please ";
+	    }
+	}
+	
+	
+	while(1)
+	{
+	    cout << "Enter the width of the pool in the range of 15 to 40 feet : ";
+        cin >> Width;      //Width variable stores total width of the pool
+        
+        if (Width >= 15 && Width <= 40)   //if condition to check whether user entered width is in the range 15 to 40 feet
+        {
+	       cout << "You have entered valid pool width of "<< Width <<" feet \n"<< endl;
+	       break;
+	    }
+	    else
+	    {
+	        
+	        cout << "Invalid pool width... Please ";
+	    }
+	}
+	
+	
+	while(1)
+	{
+	    cout << "Enter the radius of semi-circular wading area in the range of 0 to width value i.e, " << Width << " feet : ";
+        cin >> Radius;     // Radius variable stores the radius of semi-circular wading area
+        
+        if (Radius >= 0 && Radius <= Width)    //if condition to check whether user entered radius is in the range 0 to width value
+        {
+	       cout << "You have entered a valid Radius for wading area of "<< Radius <<" feet \n"<< endl;
+	       break;
+	    }
+	    else
+	    {
+	        
+	        cout << "Invalid radius of wading area... Please ";
+	    }
+	}
+	
+	
+	while(1)
+	{
+	    cout << "Enter the depth of shallow end in the range of 3 to 5 feet : ";
+        cin >> Depth_ShallowEnd;       // Depth_ShallowEnd variable stores the depth of pool at shallow end
+	
+	    if(Depth_ShallowEnd >= 3 && Depth_ShallowEnd <= 5)   //if condition to check whether user entered value is in the range 3 to 5 feet
+	    {
+	       cout << "You have entered a valid depth at shallow end of "<< Depth_ShallowEnd <<" feet \n"<< endl;
+	       break;
+	    }
+	    else
+	    {
+	        
+	        cout << "Invalid depth of shallow end... Please ";
+	    }
+	    
+	}
+	
+	
+	while(1)
+	{
+	    cout << "Enter the depth of deep end in the range of " << Depth_ShallowEnd<< " to 10 feet : ";
+        cin >> Depth_DeepEnd;          // Depth_DeepEnd variable stores the depth of deep end
+        
+        if(Depth_DeepEnd >= Depth_ShallowEnd && Depth_DeepEnd <= 10)     //if condition to check whether user entered value is in the range depth of deep end to 10 feet
+        {
+            cout << "You have entered a valid depth at deep end of "<< Depth_DeepEnd <<" feet \n"<< endl;
+	        break;
+        }
+        else
+	    {
+	        
+	        cout << "Invalid depth of deep end... Please ";
+	    }
+	}
+	
+	
+	while (1)
+    {
+        cout << "Enter the length of deep end in the range of 10 to one-third of length i.e, " << (1.0/3.0) * Length << " feet : ";
+        cin >> Length_DeepEnd;        // Length_DeepEnd variable stores the length of deep end
+        
+        if (Length_DeepEnd >= 10 && Length_DeepEnd <= (1.0/3.0) * Length)    //if condition to check whether user entered value is in the range 10 feet to one-third of length
+	    {
+	        cout << "You have entered a valid length at deep end of "<< Length_DeepEnd <<" feet \n"<< endl;
+	        break;
+	    }
+	    else
+	    {
+	        cout << "Invalid length of deep end... Please ";
+	    }
+    }
+    
+    
+     while (1)
+    {
+        cout << "Enter the length of shallow end in the range of 10 to one-third of length i.e, " << (1.0/3.0) * Length << " feet : ";
+        cin >> Length_ShallowEnd;           // Length_ShallowEnd variable stores the length of shallow end
+        
+        if (Length_ShallowEnd >= 10 && Length_ShallowEnd <= (1.0/3.0) * Length)    //if condition to check whether user entered value is in the range 10 feet to one-third of length
+	    {
+	        cout << "You have entered a valid length at shallow end of "<< Length_ShallowEnd <<" feet \n"<< endl;
+	        break;
+	    }
+	    else
+	    {
+	        cout << "Invalid length of shallow end... Please ";
+	    }
+    }
+    
+    /*Volume_of_Pool variable stores the total volume of the pool (cubic feet)
+       Volume_of_Pool = Volume of Rectangle +
+                        Volume of Trapezoid +
+                        volume of Rectangle +
+                        Half volume of cylinder */
+    
+    Volume_of_Pool = (Length_DeepEnd * Width * Depth_DeepEnd) + 
+                     (((0.5 *(Depth_DeepEnd + Depth_ShallowEnd)) * Width * (Length - (Length_DeepEnd + Length_ShallowEnd)))) +
+                     (Length_DeepEnd * Width * Depth_ShallowEnd) +
+                     (0.5 * (3.14159 * Radius * Radius * Depth_ShallowEnd));
+
+
+    //VOL_WATER variable stores the total volume of water to fill the pool (cubic feet)
+    
+    Volume_of_Water = (Length_DeepEnd * Width * (Depth_DeepEnd-0.5)) +
+                      (((0.5 * ((Depth_DeepEnd-0.5) + (Depth_ShallowEnd-0.5))) * Width * (Length - (Length_DeepEnd + Length_ShallowEnd)))) +
+                      (Length_DeepEnd * Width * (Depth_ShallowEnd-0.5)) +
+                      (0.5 * (3.14159 * Radius * Radius * (Depth_ShallowEnd-0.5)));
+
+    // Total_Water_Required variable stores the total volume of water to fill the pool in Cubic feet (1 cubic foot or water = 7.481 US gallons)
+    
+    Total_Water_Required = Volume_of_Water * 7.481;
+    
+    // Total_Chlorine_Required variable stores the total amount of chlorine needed to treat the pool (0.0001 pounds per US gallon)
+    
+    Total_Chlorine_Required = Total_Water_Required * 0.0001;
+    
+    cout <<endl << " ******** Pool Volume  ********* " << endl;
+    
+    cout << "\nTotal volume of the pool (cubic feet): " << round(Volume_of_Pool) << endl;
+    
+    cout << "\nTotal volume of water to fill the pool (cubic feet): " << round(Volume_of_Water) << endl;
+    
+    cout << "\nTotal US gallon of water to fill the pool: " << round(Total_Water_Required) << endl;
+    
+    cout << "\nTotal pounds of chlorine treatment needed: " << fixed << setprecision(1) << Total_Chlorine_Required << endl;
+    
+    return 0;
+    
+}
