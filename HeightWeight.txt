@@ -36,6 +36,8 @@ int main()
            cout<<height[i]<<" "<<endl;
            }      
          }
+		 
+		 }}}
        }
         return 0;
 }
